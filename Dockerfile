@@ -11,16 +11,19 @@ ARG DEBUG_TOOLS
 RUN if [ "$DEBUG_TOOLS" = "true" ] ; then apk add -U vim strace net-tools curl netcat-openbsd ; fi
 
 # Install N3IWF dependencies
+RUN if [ "$DEBUG_TOOLS" = "true" ] ; then apk add -U vim strace net-tools curl netcat-openbsd ; fi
+
+# Install N3IWF dependencies
 RUN apk add -U iproute2
 
 # Set working dir
 WORKDIR /free5gc
-RUN mkdir -p config/ log/ cert/
+RUN mkdir -p config/ log/ config/TLS/
 
 # Copy executable and default certs
 COPY --from=builder /free5gc/${F5GC_MODULE} ./
-COPY --from=builder /free5gc/cert/${F5GC_MODULE}.pem ./cert/
-COPY --from=builder /free5gc/cert/${F5GC_MODULE}.key ./cert/
+COPY --from=builder /free5gc/config/TLS/${F5GC_MODULE}.pem ./config/TLS/
+COPY --from=builder /free5gc/config/TLS/${F5GC_MODULE}.key ./config/TLS/cd
 
 # Config files volume
 VOLUME [ "/free5gc/config" ]
