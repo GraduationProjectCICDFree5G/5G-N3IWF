@@ -1,4 +1,4 @@
-FROM 5ggraduationproject/n3iwf-base:latest AS builder
+FROM faborange/n3iwf-base:latest AS builder
 FROM alpine:3.15
 
 LABEL description="Free5GC open source 5G Core Network" \
