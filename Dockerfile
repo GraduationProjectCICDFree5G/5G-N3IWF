@@ -1,9 +1,9 @@
-FROM free5gc-base AS builder
+FROM 5ggraduationproject-base AS builder
 FROM alpine:3.13.6
 
 LABEL description="Free5GC open source 5G Core Network" \
     version="Stage 3"
-    
+
 ENV GIN_MODE="release"
 
 # Install N3IWF dependencies
