@@ -15,7 +15,7 @@ RUN apk add -U iproute2
 
 # Set working dir
 WORKDIR /free5gc
-RUN mkdir -p config/ log/ config/TLS/
+RUN mkdir -p config/ log/ cert/
 
 # Copy executable and default certs
 COPY --from=builder /free5gc/${F5GC_MODULE} ./
