@@ -1,4 +1,4 @@
-FROM gradproj/n3iwf-base:latest AS builder
+FROM 5ggraduationproject/n3iwf-base:latest AS builder
 FROM alpine:3.15
 
 LABEL description="Free5GC open source 5G Core Network" \
@@ -23,7 +23,7 @@ RUN mkdir -p config/ log/ config/TLS/
 # Copy executable and default certs
 COPY --from=builder /free5gc/${F5GC_MODULE} ./
 COPY --from=builder /free5gc/config/TLS/${F5GC_MODULE}.pem ./config/TLS/
-COPY --from=builder /free5gc/config/TLS/${F5GC_MODULE}.key ./config/TLS/cd
+COPY --from=builder /free5gc/config/TLS/${F5GC_MODULE}.key ./config/TLS/
 
 # Config files volume
 VOLUME [ "/free5gc/config" ]
