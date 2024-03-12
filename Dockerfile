@@ -12,7 +12,7 @@ WORKDIR /free5gc
 RUN mkdir -p log/ cert/ n3iwf/
 
 # Copy executable and default certs/configs
-COPY --from=builder /free5gc/n3iwf ./n3iwf
+COPY --from=builder /5ggraduationproject/n3iwf ./n3iwf
 COPY --from=builder /free5gc/cert/n3iwf.pem ./cert/
 COPY --from=builder /free5gc/cert/n3iwf.key ./cert/
 COPY --from=builder /free5gc/config/n3iwfcfg.yaml ./config/
